@@ -11,10 +11,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 Explain how your project works
 
+http://www.av.it.pt/conftele2009/Papers/16.pdf
+
 ## How to test
 
-Explain how to use your project
+connect a multimeter to analog output 0. It should measure around 0.7v and remain constant with temperature.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+multimeter
