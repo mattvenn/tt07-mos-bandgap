@@ -6,15 +6,15 @@ V {}
 S {}
 E {}
 B 2 340 -60 1140 340 {flags=graph
-y1=0.7
+y1=0.0037
 y2=0.73
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=8.0835448e-07
-x2=9.4257154e-07
+x1=1e-09
+x2=1e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -132,11 +132,19 @@ N -600 310 -600 320 {
 lab=GND}
 N -490 310 -490 320 {
 lab=GND}
+N -500 540 -480 540 {
+lab=vref_out}
+N -480 540 -460 540 {
+lab=vref_out}
+N -480 600 -480 610 {
+lab=GND}
+N -580 540 -560 540 {
+lab=vref}
 C {sky130_fd_pr/pfet_01v8.sym} -200 0 0 1 {name=M1
 L=0.15
 W=1
 nf=1
-mult=1
+mult=\{mos_mult\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -150,7 +158,7 @@ C {sky130_fd_pr/pfet_01v8.sym} -50 0 0 0 {name=M2
 L=0.15
 W=1
 nf=1
-mult=1
+mult=\{mos_mult\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -164,7 +172,7 @@ C {sky130_fd_pr/pfet_01v8.sym} 110 0 0 0 {name=M3
 L=0.15
 W=1
 nf=1
-mult=1
+mult=\{mos_mult\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -178,7 +186,7 @@ C {sky130_fd_pr/nfet_01v8.sym} -200 150 0 1 {name=M4
 L=0.15
 W=1
 nf=1 
-mult=1
+mult=\{mos_mult\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -192,7 +200,7 @@ C {sky130_fd_pr/nfet_01v8.sym} -50 150 0 0 {name=M5
 L=0.15
 W=1
 nf=1 
-mult=1
+mult=\{mos_mult\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -206,7 +214,7 @@ C {sky130_fd_pr/pfet_01v8.sym} -200 380 0 1 {name=M6
 L=0.15
 W=1
 nf=1
-mult=1
+mult=\{mos_mult\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -220,7 +228,7 @@ C {sky130_fd_pr/pfet_01v8.sym} -50 380 0 0 {name=M7
 L=0.15
 W=1
 nf=1
-mult=1
+mult=\{mos_mult\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -234,7 +242,7 @@ C {sky130_fd_pr/pfet_01v8.sym} 110 380 0 0 {name=M8
 L=0.15
 W=1
 nf=1
-mult=1
+mult=\{mos_mult\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -244,16 +252,6 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {sky130_fd_pr/res_high_po_0p35.sym} -220 250 0 0 {name=R1
-L=0.35
-model=res_high_po_0p35
-spiceprefix=X
-mult=1}
-C {sky130_fd_pr/res_high_po_0p35.sym} 130 250 0 0 {name=R2
-L=0.35
-model=res_high_po_0p35
-spiceprefix=X
-mult=1}
 C {devices/iopin.sym} -30 450 0 0 {name=p1 lab=VSS}
 C {devices/iopin.sym} -30 -80 0 0 {name=p3 lab=VDD}
 C {devices/iopin.sym} 160 120 0 0 {name=p4 lab=vref}
@@ -282,10 +280,11 @@ value="
 *.option  METHOD = GEAR
 *.param mc_mm_switch=0
 .control
+.param mos_mult = 20
 let tempv = 10            ; create a vector vddc and assign 1.8
 repeat 20
   set temp = $&tempv         ; alter the voltage V1 using vector vddc
-  tran 500p 1u uic
+  tran 500n 6u uic
   let tempv = tempv + 5   ; update vddc
   write bandgap.raw  
   set appendwrite 
@@ -302,7 +301,31 @@ C {devices/vsource.sym} -600 280 0 0 {name=V2 value=0 savecurrent=false}
 C {devices/gnd.sym} -600 320 0 0 {name=l3 lab=GND}
 C {devices/lab_pin.sym} -600 240 2 1 {name=p14 sig_type=std_logic lab=VSS
 }
-C {devices/launcher.sym} 460 450 0 0 {name=h5
+C {devices/launcher.sym} 450 450 0 0 {name=h5
 descr="load waves" 
 tclcommand="xschem raw_read $netlist_dir/bandgap.raw tran"
 }
+C {devices/iopin.sym} -580 540 0 1 {name=p15 lab=vref}
+C {sky130_fd_pr/res_high_po_0p69.sym} -220 250 0 0 {name=R4
+L=10
+model=res_high_po_0p69
+spiceprefix=X
+mult=1}
+C {sky130_fd_pr/res_high_po_0p69.sym} 130 250 0 0 {name=R1
+L=10
+model=res_high_po_0p69
+spiceprefix=X
+mult=1}
+C {devices/lab_pin.sym} -460 540 0 1 {name=p16 sig_type=std_logic lab=vref_out
+}
+C {devices/res.sym} -530 540 1 0 {name=R2
+value=500
+footprint=1206
+device=resistor
+m=1}
+C {devices/capa.sym} -480 570 0 0 {name=C3
+m=1
+value=10p
+footprint=1206
+device="ceramic capacitor"}
+C {devices/gnd.sym} -480 610 0 0 {name=l1 lab=GND}
