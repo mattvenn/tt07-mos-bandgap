@@ -13,17 +13,17 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## Circuit
 
-![bandgap circuit](docs/bandgap_circuit.png)
+![bandgap circuit](bandgap_circuit.png)
 
-![opamp buffer](docs/bandgap_opamp.png)  
+![opamp buffer](bandgap_opamp.png)  
 
 ## Simulation
 
 Simulated output is 0.71 to 0.725v across the 10 to 120 degrees C.
 
-![startup](docs/bandgap_startup.png)
+![startup](bandgap_startup.png)
 
-![output](docs/bandgap_output.png)
+![output](bandgap_output.png)
 
 ## How to test
 
