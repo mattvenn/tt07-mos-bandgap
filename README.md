@@ -2,6 +2,7 @@
 
 # Minimal MOS bandgap
 
+- Based on [work by Antonio Ribeiro, Ricardo Gama, Tiago Costa, Rui Neves, Nuno Horta](http://www.av.it.pt/conftele2009/Papers/16.pdf)
 - [Read the documentation for project](docs/info.md)
 
 ## What is Tiny Tapeout?

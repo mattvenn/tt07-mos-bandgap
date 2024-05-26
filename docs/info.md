@@ -9,12 +9,26 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-http://www.av.it.pt/conftele2009/Papers/16.pdf
+[Read the paper here](http://www.av.it.pt/conftele2009/Papers/16.pdf)
+
+## Circuit
+
+![bandgap circuit](docs/bandgap_circuit.png)
+
+![opamp buffer](docs/bandgap_opamp.png)  
+
+## Simulation
+
+Simulated output is 0.71 to 0.725v across the 10 to 120 degrees C.
+
+![startup](docs/bandgap_startup.png)
+
+![output](docs/bandgap_output.png)
 
 ## How to test
 
-connect a multimeter to analog output 0. It should measure around 0.7v and remain constant with temperature.
+Connect a multimeter to analog output 0. It should measure around 0.7v and remain constant with temperature.
 
 ## External hardware
 
-multimeter
+Multimeter
