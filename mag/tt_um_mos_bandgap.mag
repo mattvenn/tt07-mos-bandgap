@@ -1,9 +1,6 @@
 magic
 tech sky130A
-timestamp 1716712229
-<< checkpaint >>
-rect -530 -130 880 22706
-rect 4270 -130 5680 22706
+timestamp 1716716180
 << metal4 >>
 rect 399 22476 429 22576
 rect 767 22476 797 22576
@@ -58,6 +55,14 @@ rect 9017 0 9107 100
 rect 11225 0 11315 100
 rect 13433 0 13523 100
 rect 15641 0 15731 100
+use bandgap  bandgap_0
+timestamp 1716715833
+transform 1 0 12995 0 1 4361
+box -400 100 1380 2100
+use p3_opamp  p3_opamp_0
+timestamp 1715778954
+transform 1 0 10842 0 1 -548
+box 1825 1585 4250 4130
 << labels >>
 flabel metal4 s 15487 22476 15517 22576 0 FreeSans 240 90 0 0 clk
 port 0 nsew signal input
