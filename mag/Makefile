@@ -1,4 +1,4 @@
-PROJECT_NAME ?= tt_um_twin_tee_opamp_osc
+PROJECT_NAME ?= tt_um_mos_bandgap
 MAGIC_RC := $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc
 
 .PHONY: lvs magic start
