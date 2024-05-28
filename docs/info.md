@@ -31,4 +31,8 @@ Connect a multimeter to analog output 0. It should measure around 0.7v and remai
 
 ## External hardware
 
-Multimeter
+Multimeter, hot air gun to heat the chip
+
+## References
+
+* [A sky130 reference bandgap with results](https://github.com/johnkustin/bandgapReferenceCircuit)
