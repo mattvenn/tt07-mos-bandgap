@@ -6,15 +6,15 @@ V {}
 S {}
 E {}
 B 2 590 70 1390 470 {flags=graph
-y1=0.67
-y2=0.85
+y1=0.8
+y2=0.89
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.3
-x2=2
+x1=14.5
+x2=104.5
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -27,15 +27,15 @@ logx=0
 logy=0
 dataset=0}
 B 2 570 590 1370 990 {flags=graph
-y1=0.74
-y2=0.84
+y1=0.49
+y2=0.89
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=10
-x2=100
+x1=14.5
+x2=104.5
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -50,9 +50,11 @@ logy=0
 
 
 
-dataset=1
+
 color=4
-node=vref}
+node=vref
+dataset=-1
+rainbow=1}
 B 2 590 -380 1390 20 {flags=graph
 y1=-5.3e-06
 y2=-2.8e-06
@@ -61,8 +63,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.3
-x2=2
+x1=14.5
+x2=104.5
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -192,13 +194,13 @@ C {devices/lab_wire.sym} -290 250 0 0 {name=p10 sig_type=std_logic lab=VSS}
 C {devices/lab_wire.sym} 70 250 0 0 {name=p11 sig_type=std_logic lab=VSS}
 C {devices/lab_wire.sym} -290 200 0 0 {name=p2 sig_type=std_logic lab=Va}
 C {devices/lab_wire.sym} -80 200 0 0 {name=p12 sig_type=std_logic lab=Vb}
-C {sky130_fd_pr/res_high_po_0p69.sym} -220 250 0 0 {name=R4
-L=100
+C {sky130_fd_pr/res_high_po_0p69.sym} -220 250 0 0 {name=R1
+L=\{r1_len\}
 model=res_high_po_0p69
 spiceprefix=X
 mult=1}
-C {sky130_fd_pr/res_high_po_0p69.sym} 130 250 0 0 {name=R1
-L=140
+C {sky130_fd_pr/res_high_po_0p69.sym} 130 250 0 0 {name=R2
+L=\{r2_len\}
 model=res_high_po_0p69
 spiceprefix=X
 mult=1}
@@ -209,7 +211,7 @@ C {devices/lab_wire.sym} -220 350 0 0 {name=p16 sig_type=std_logic lab=r4_m6}
 C {devices/launcher.sym} 360 540 0 0 {name=h2
 descr="Annotate OP" 
 tclcommand="set show_hidden_texts 1; xschem annotate_op"}
-C {devices/launcher.sym} 670 540 0 0 {name=h5
+C {devices/launcher.sym} 680 540 0 0 {name=h5
 descr="load waves" 
 tclcommand="xschem raw_read $netlist_dir/bandgap-op.raw dc"
 }
@@ -237,23 +239,35 @@ value="
 .param bot_l = 5
 .param bot_w = 10
 .param bot_m = 2
-
+.param r1_len = 200
+.param r2_len = 200
 .control
-op
-write bandgap-op.raw
+*op
+*write bandgap-op.raw
 set appendwrite
-reset 
+*reset 
 
-dc v1 1.3 2 0.01 
-write bandgap-op.raw
-reset
-
-dc temp 10 100 1
-write bandgap-op.raw
-quit
+*dc v1 1.3 2 0.01 
+*write bandgap-op.raw
+*reset
+let r1_len_val = 100
+let r2_len_val = 100
+repeat 10
+  alterparam r2_len = $&r2_len_val
+  let r2_len_val = r2_len_val + 50
+  repeat 10
+    alterparam r1_len = $&r1_len_val
+    let r1_len_val = r1_len_val + 50
+    dc temp 10 100 1
+    write bandgap-op.raw
+    reset
+  end
+end
+*quit
 .endc
 
-"}
+"
+}
 C {devices/vsource.sym} 450 720 0 0 {name=V1 value="1.8" savecurrent=false}
 C {devices/gnd.sym} 450 760 0 0 {name=l2 lab=GND}
 C {devices/lab_pin.sym} 450 680 2 1 {name=p17 sig_type=std_logic lab=VDD
