@@ -7,7 +7,7 @@ S {}
 E {}
 B 2 590 70 1390 470 {flags=graph
 y1=0.67
-y2=0.84
+y2=0.85
 ypos1=0
 ypos2=2
 divy=5
@@ -27,15 +27,15 @@ logx=0
 logy=0
 dataset=0}
 B 2 570 590 1370 990 {flags=graph
-y1=0.75
-y2=0.86
+y1=0.74
+y2=0.84
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
 x1=10
-x2=98
+x2=100
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -54,8 +54,8 @@ dataset=1
 color=4
 node=vref}
 B 2 590 -380 1390 20 {flags=graph
-y1=-6.8e-06
-y2=-4.6e-06
+y1=-5.3e-06
+y2=-2.8e-06
 ypos1=0
 ypos2=2
 divy=5
@@ -198,7 +198,7 @@ model=res_high_po_0p69
 spiceprefix=X
 mult=1}
 C {sky130_fd_pr/res_high_po_0p69.sym} 130 250 0 0 {name=R1
-L=100
+L=140
 model=res_high_po_0p69
 spiceprefix=X
 mult=1}
@@ -223,20 +223,20 @@ value="
 
 "
 spice_ignore=false}
-C {devices/code.sym} -250 660 0 0 {name=SIMULATION
+C {devices/code.sym} -260 660 0 0 {name=SIMULATION
 only_toplevel=false 
 value="
 .param top_l = 10
-.param top_w = 10
-.param top_m = 10
+.param top_w = 20
+.param top_m = 2
 
-.param mid_l = 4
+.param mid_l = 10
 .param mid_w = 10
-.param mid_m = 1
+.param mid_m = 2
 
-.param bot_l = 10
+.param bot_l = 5
 .param bot_w = 10
-.param bot_m = 10
+.param bot_m = 2
 
 .control
 op
@@ -244,13 +244,13 @@ write bandgap-op.raw
 set appendwrite
 reset 
 
-dc v1 1.3 2 0.05 
+dc v1 1.3 2 0.01 
 write bandgap-op.raw
 reset
 
-dc temp 10 100 4
+dc temp 10 100 1
 write bandgap-op.raw
-
+quit
 .endc
 
 "}
@@ -342,7 +342,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} -200 380 0 1 {name=M6
 L=\{bot_l\}
-W=\{10*bot_w\}
+W=\{5*bot_w\}
 nf=1
 mult=\{bot_m\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -356,7 +356,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 110 380 0 0 {name=M8
 L=\{bot_l\}
-W=\{10*bot_w\}
+W=\{5*bot_w\}
 nf=1
 mult=\{bot_m\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
