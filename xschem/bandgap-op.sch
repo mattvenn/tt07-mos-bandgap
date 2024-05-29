@@ -5,6 +5,54 @@ K {}
 V {}
 S {}
 E {}
+B 2 590 70 1390 470 {flags=graph
+y1=0.66
+y2=0.98
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=1.3
+x2=2
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node=vref
+color=4
+
+unitx=1
+logx=0
+logy=0
+dataset=0}
+B 2 570 590 1370 990 {flags=graph
+y1=0.88
+y2=0.92
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=10
+x2=98
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+
+
+
+unitx=1
+logx=0
+logy=0
+
+
+
+
+dataset=1
+color=4
+node=vref}
 N 130 30 130 220 {
 lab=vref}
 N 130 280 130 350 {
@@ -103,6 +151,14 @@ N -80 200 -30 200 {
 lab=Vb}
 N -120 380 -120 430 {
 lab=VSS}
+N 340 680 340 690 {
+lab=VSS}
+N 450 680 450 690 {
+lab=VDD}
+N 340 750 340 760 {
+lab=GND}
+N 450 750 450 760 {
+lab=GND}
 C {sky130_fd_pr/pfet_01v8.sym} -200 0 0 1 {name=M1
 L=\{top_l\}
 W=\{top_w\}
@@ -228,12 +284,12 @@ C {devices/lab_wire.sym} 70 250 0 0 {name=p11 sig_type=std_logic lab=VSS}
 C {devices/lab_wire.sym} -290 200 0 0 {name=p2 sig_type=std_logic lab=Va}
 C {devices/lab_wire.sym} -80 200 0 0 {name=p12 sig_type=std_logic lab=Vb}
 C {sky130_fd_pr/res_high_po_0p69.sym} -220 250 0 0 {name=R4
-L=200
+L=100
 model=res_high_po_0p69
 spiceprefix=X
 mult=1}
 C {sky130_fd_pr/res_high_po_0p69.sym} 130 250 0 0 {name=R1
-L=400
+L=100
 model=res_high_po_0p69
 spiceprefix=X
 mult=1}
@@ -241,3 +297,67 @@ C {devices/lab_wire.sym} -80 0 0 0 {name=p13 sig_type=std_logic lab=top_gate}
 C {devices/lab_wire.sym} -80 80 0 0 {name=p14 sig_type=std_logic lab=n_gate}
 C {devices/lab_wire.sym} 130 330 0 0 {name=p15 sig_type=std_logic lab=r1_m8}
 C {devices/lab_wire.sym} -220 350 0 0 {name=p16 sig_type=std_logic lab=r4_m6}
+C {devices/launcher.sym} 360 540 0 0 {name=h2
+descr="Annotate OP" 
+tclcommand="set show_hidden_texts 1; xschem annotate_op"}
+C {devices/launcher.sym} 670 540 0 0 {name=h5
+descr="load waves" 
+tclcommand="xschem raw_read $netlist_dir/bandgap-op.raw dc"
+}
+C {devices/code.sym} -100 670 0 0 {name=TT_MODELS
+only_toplevel=true
+format="tcleval( @value )"
+value="
+** opencircuitdesign pdks install
+.lib $::SKYWATER_MODELS/sky130.lib.spice tt
+
+
+"
+spice_ignore=false}
+C {devices/code.sym} -250 660 0 0 {name=SIMULATION
+only_toplevel=false 
+value="
+.param top_l = 10
+.param top_w = 10
+.param top_m = 2
+
+.param mid_l = 10
+.param mid_w = 10
+.param mid_m = 1
+
+.param bot_l = 5
+.param bot_w = 5
+.param bot_m = 10
+
+.control
+op
+write bandgap-op.raw
+set appendwrite
+reset 
+
+dc v1 1.3 2 0.05 
+write bandgap-op.raw
+reset
+
+dc temp 10 100 4
+write bandgap-op.raw
+
+.endc
+
+"}
+C {devices/vsource.sym} 450 720 0 0 {name=V1 value="1.8" savecurrent=false}
+C {devices/gnd.sym} 450 760 0 0 {name=l2 lab=GND}
+C {devices/lab_pin.sym} 450 680 2 1 {name=p17 sig_type=std_logic lab=VDD
+}
+C {devices/vsource.sym} 340 720 0 0 {name=V2 value=0 savecurrent=false}
+C {devices/gnd.sym} 340 760 0 0 {name=l3 lab=GND}
+C {devices/lab_pin.sym} 340 680 2 1 {name=p18 sig_type=std_logic lab=VSS
+}
+C {devices/capa.sym} 220 720 0 0 {name=C1
+m=1
+value=1u
+footprint=1206
+device="ceramic capacitor"}
+C {devices/lab_pin.sym} 220 690 2 1 {name=p19 sig_type=std_logic lab=VDD
+}
+C {devices/gnd.sym} 220 750 0 0 {name=l4 lab=GND}
