@@ -1,69 +1,15 @@
 ** sch_path: /home/matt/work/asic-workshop/shuttle-2404/tt07-mos-bandgap/xschem/bandgap.sch
-**.subckt bandgap VDD vref VSS
-*.iopin VSS
-*.iopin VDD
-*.iopin vref
-XM1 top_gate top_gate VDD VDD sky130_fd_pr__pfet_01v8 L={top_l} W={top_w} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={top_m}
-+ m={top_m}
-XM2 n_gate top_gate VDD VDD sky130_fd_pr__pfet_01v8 L={top_l} W={top_w} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={top_m}
-+ m={top_m}
-XM3 vref top_gate VDD VDD sky130_fd_pr__pfet_01v8 L={top_l} W={top_w} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={top_m}
-+ m={top_m}
-XM4 top_gate n_gate Va VSS sky130_fd_pr__nfet_01v8 L={mid_l} W={mid_w} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={mid_m}
-+ m={mid_m}
-XM5 n_gate n_gate Vb VSS sky130_fd_pr__nfet_01v8 L={mid_l} W={mid_w} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={mid_m}
-+ m={mid_m}
-XM6 VSS VSS r4_m6 VDD sky130_fd_pr__pfet_01v8 L={bot_l} W={10*bot_w} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={bot_m}
-+ m={bot_m}
-XM7 VSS VSS Vb VDD sky130_fd_pr__pfet_01v8 L={bot_l} W={bot_w} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={bot_m}
-+ m={bot_m}
-XM8 VSS VSS r1_m8 VDD sky130_fd_pr__pfet_01v8 L={bot_l} W={10*bot_w} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={bot_m}
-+ m={bot_m}
-XR4 r4_m6 Va VSS sky130_fd_pr__res_high_po_0p69 L=210 mult=1 m=1
-XR1 r1_m8 vref VSS sky130_fd_pr__res_high_po_0p69 L=210 mult=1 m=1
-V1 VDD GND 3
-V2 VSS GND 0
-C1 VDD GND 1u m=1
-**** begin user architecture code
-
-** opencircuitdesign pdks install
-.lib /home/matt/.volare/volare/sky130/versions/bdc9412b3e468c102d01b7cf6337be06ec6e9c9a/sky130A/libs.tech/ngspice/sky130.lib.spice tt
-
-
-
-
-
-.param top_l = 10
-.param top_w = 30
-.param top_m = 10
-
-.param mid_l = 10
-.param mid_w = 9
-.param mid_m = 1
-
-.param bot_l = 2
-.param bot_w = 9
-.param bot_m = 10
-
-.control
-
- op
-
-write bandgap.raw
-
-.endc
-
-
-
-**** end user architecture code
-**.ends
-.GLOBAL GND
+.subckt bandgap VDD vref VSS
+*.PININFO VSS:B VDD:B vref:B
+XM1 top_gate top_gate VDD VDD sky130_fd_pr__pfet_01v8 L=10 W=10 nf=1 m=1
+XM2 n_gate top_gate VDD VDD sky130_fd_pr__pfet_01v8 L=10 W=10 nf=1 m=1
+XM3 vref top_gate VDD VDD sky130_fd_pr__pfet_01v8 L=10 W=10 nf=1 m=1
+XR4 r4_m6 Va VSS sky130_fd_pr__res_high_po_0p69 L=200 mult=1 m=1
+XR1 r1_m8 vref VSS sky130_fd_pr__res_high_po_0p69 L=200 mult=1 m=1
+XM9 top_gate n_gate Va VSS sky130_fd_pr__nfet_01v8_lvt L=5 W=10 nf=1 m=1
+XM4 n_gate n_gate Vb VSS sky130_fd_pr__nfet_01v8_lvt L=5 W=10 nf=1 m=1
+XM5 VSS VSS r4_m6 VDD sky130_fd_pr__pfet_01v8_lvt L=5 W=10 nf=1 m=1
+XM6 VSS VSS r1_m8 VDD sky130_fd_pr__pfet_01v8_lvt L=5 W=10 nf=1 m=1
+XM7 VSS VSS Vb VDD sky130_fd_pr__pfet_01v8_lvt L=5 W=3 nf=1 m=1
+.ends
 .end

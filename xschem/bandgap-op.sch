@@ -33,8 +33,8 @@ node=vref
 rainbow=0
 dataset=0}
 B 2 570 590 1370 990 {flags=graph
-y1=0.71212071
-y2=0.71724071
+y1=0.71
+y2=0.72
 ypos1=0
 ypos2=2
 divy=5
@@ -63,8 +63,8 @@ node=vref
 rainbow=0
 dataset=1}
 B 2 590 -380 1390 20 {flags=graph
-y1=-1.4e-06
-y2=-8.3e-09
+y1=-1.8e-06
+y2=-1.2e-08
 ypos1=0
 ypos2=2
 divy=5
@@ -251,9 +251,10 @@ value="
 .param r1_len = 200
 .param r2_len = 200
 .control
-*op
-*write bandgap-op.raw
-*reset 
+op
+write bandgap-op.raw
+reset 
+    set appendwrite
 
 *dc v1 1.3 2 0.01 
 *dc temp 10 100 1
