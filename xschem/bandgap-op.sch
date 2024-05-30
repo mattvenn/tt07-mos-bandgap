@@ -6,36 +6,42 @@ V {}
 S {}
 E {}
 B 2 590 70 1390 470 {flags=graph
-y1=0.8
-y2=0.89
+y1=0.68
+y2=0.72
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=14.5
-x2=104.5
+x1=10
+x2=100
 divx=5
 subdivx=1
 xlabmag=1.0
 ylabmag=1.0
-node=vref
-color=4
+
+
 
 unitx=1
 logx=0
 logy=0
-dataset=0}
+
+sweep=v1
+color=4
+node=vref
+
+rainbow=1
+dataset=11}
 B 2 570 590 1370 990 {flags=graph
-y1=0.49
-y2=0.89
+y1=0.68
+y2=0.7
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=14.5
-x2=104.5
+x1=10
+x2=100
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -53,18 +59,19 @@ logy=0
 
 color=4
 node=vref
-dataset=-1
-rainbow=1}
+
+rainbow=1
+dataset=0}
 B 2 590 -380 1390 20 {flags=graph
-y1=-5.3e-06
-y2=-2.8e-06
+y1=-3.8e-06
+y2=-3.1e-08
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=14.5
-x2=104.5
+x1=10
+x2=100
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -76,6 +83,7 @@ unitx=1
 logx=0
 logy=0
 }
+B 4 620 310 630 320 {}
 N 130 30 130 220 {
 lab=vref}
 N 130 280 130 350 {
@@ -229,7 +237,7 @@ C {devices/code.sym} -260 660 0 0 {name=SIMULATION
 only_toplevel=false 
 value="
 .param top_l = 10
-.param top_w = 20
+.param top_w = 10
 .param top_m = 2
 
 .param mid_l = 10
@@ -237,32 +245,35 @@ value="
 .param mid_m = 2
 
 .param bot_l = 5
-.param bot_w = 10
+.param bot_w = 20
+.param bot_m_w = 10
 .param bot_m = 2
-.param r1_len = 200
-.param r2_len = 200
+.param r1_len = 100
+.param r2_len = 100
 .control
 *op
 *write bandgap-op.raw
-set appendwrite
 *reset 
 
 *dc v1 1.3 2 0.01 
+*dc temp 10 100 1
 *write bandgap-op.raw
 *reset
-let r1_len_val = 100
-let r2_len_val = 100
-repeat 10
-  alterparam r2_len = $&r2_len_val
-  let r2_len_val = r2_len_val + 50
-  repeat 10
-    alterparam r1_len = $&r1_len_val
-    let r1_len_val = r1_len_val + 50
+let bot_m_w_val = 0.5
+repeat 20
+    alterparam bot_m_w = $&bot_m_w_val 
+    let bot_m_w_val = bot_m_w_val + 0.25
+   
+  *  dc v1 1.3 2 0.01
+   * write bandgap-op.raw
+
+    reset
     dc temp 10 100 1
     write bandgap-op.raw
-    reset
+
+    set appendwrite
+
   end
-end
 *quit
 .endc
 
@@ -298,48 +309,6 @@ sa=0 sb=0 sd=0
 model=nfet_01v8_lvt
 spiceprefix=X
 }
-C {sky130_fd_pr/pfet_01v8_lvt.sym} 110 0 0 0 {name=M3
-L=\{top_l\}
-W=\{top_w\}
-nf=1
-mult=\{top_m\}
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8_lvt
-spiceprefix=X
-}
-C {sky130_fd_pr/pfet_01v8_lvt.sym} -50 0 0 0 {name=M1
-L=\{top_l\}
-W=\{top_w\}
-nf=1
-mult=\{top_m\}
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8_lvt
-spiceprefix=X
-}
-C {sky130_fd_pr/pfet_01v8_lvt.sym} -200 0 0 1 {name=M2
-L=\{top_l\}
-W=\{top_w\}
-nf=1
-mult=\{top_m\}
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8_lvt
-spiceprefix=X
-}
 C {sky130_fd_pr/nfet_01v8_lvt.sym} -200 150 0 1 {name=M4
 L=\{mid_l\}
 W=\{mid_w\}
@@ -356,7 +325,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} -200 380 0 1 {name=M6
 L=\{bot_l\}
-W=\{5*bot_w\}
+W=\{bot_w\}
 nf=1
 mult=\{bot_m\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -370,7 +339,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 110 380 0 0 {name=M8
 L=\{bot_l\}
-W=\{5*bot_w\}
+W=\{bot_w\}
 nf=1
 mult=\{bot_m\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -384,7 +353,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} -50 380 0 0 {name=M7
 L=\{bot_l\}
-W=\{bot_w\}
+W=\{bot_m_w\}
 nf=1
 mult=\{bot_m\}
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -394,5 +363,47 @@ ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
+spiceprefix=X
+}
+C {sky130_fd_pr/pfet_01v8.sym} 110 0 0 0 {name=M9
+L=\{top_l\}
+W=\{top_w\}
+nf=1
+mult=\{top_m\}
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/pfet_01v8.sym} -200 0 0 1 {name=M1
+L=\{top_l\}
+W=\{top_w\}
+nf=1
+mult=\{top_m\}
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/pfet_01v8.sym} -50 0 0 0 {name=M2
+L=\{top_l\}
+W=\{top_w\}
+nf=1
+mult=\{top_m\}
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8
 spiceprefix=X
 }
