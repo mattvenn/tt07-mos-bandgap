@@ -6,15 +6,15 @@ V {}
 S {}
 E {}
 B 2 590 70 1390 470 {flags=graph
-y1=0.68
-y2=0.72
+y1=0.45
+y2=0.82
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=10
-x2=100
+x1=1.3
+x2=2
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -30,11 +30,11 @@ sweep=v1
 color=4
 node=vref
 
-rainbow=1
-dataset=11}
+rainbow=0
+dataset=0}
 B 2 570 590 1370 990 {flags=graph
-y1=0.68
-y2=0.7
+y1=0.71212071
+y2=0.71724071
 ypos1=0
 ypos2=2
 divy=5
@@ -60,18 +60,18 @@ logy=0
 color=4
 node=vref
 
-rainbow=1
-dataset=0}
+rainbow=0
+dataset=1}
 B 2 590 -380 1390 20 {flags=graph
-y1=-3.8e-06
-y2=-3.1e-08
+y1=-1.4e-06
+y2=-8.3e-09
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=10
-x2=100
+x1=1.3
+x2=2
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -238,18 +238,18 @@ only_toplevel=false
 value="
 .param top_l = 10
 .param top_w = 10
-.param top_m = 2
+.param top_m = 1
 
-.param mid_l = 10
+.param mid_l = 5
 .param mid_w = 10
-.param mid_m = 2
+.param mid_m = 1
 
 .param bot_l = 5
-.param bot_w = 20
-.param bot_m_w = 10
-.param bot_m = 2
-.param r1_len = 100
-.param r2_len = 100
+.param bot_w = 10
+.param bot_m_w = 3
+.param bot_m = 1
+.param r1_len = 200
+.param r2_len = 200
 .control
 *op
 *write bandgap-op.raw
@@ -259,21 +259,22 @@ value="
 *dc temp 10 100 1
 *write bandgap-op.raw
 *reset
-let bot_m_w_val = 0.5
-repeat 20
-    alterparam bot_m_w = $&bot_m_w_val 
-    let bot_m_w_val = bot_m_w_val + 0.25
+let bot_m_w_val = 2
+*repeat 20
+ *   alterparam bot_m_w = $&bot_m_w_val 
+  *  let bot_m_w_val = bot_m_w_val + 0.1
    
-  *  dc v1 1.3 2 0.01
-   * write bandgap-op.raw
+    dc v1 1.3 2 0.01
+    write bandgap-op.raw
+    set appendwrite
 
     reset
     dc temp 10 100 1
     write bandgap-op.raw
-
     set appendwrite
 
-  end
+
+ * end
 *quit
 .endc
 
