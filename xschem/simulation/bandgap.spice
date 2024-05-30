@@ -4,8 +4,8 @@
 XM1 top_gate top_gate VDD VDD sky130_fd_pr__pfet_01v8 L=10 W=10 nf=1 m=1
 XM2 n_gate top_gate VDD VDD sky130_fd_pr__pfet_01v8 L=10 W=10 nf=1 m=1
 XM3 vref top_gate VDD VDD sky130_fd_pr__pfet_01v8 L=10 W=10 nf=1 m=1
-XR4 r4_m6 Va VSS sky130_fd_pr__res_high_po_0p69 L=200 mult=1 m=1
-XR1 r1_m8 vref VSS sky130_fd_pr__res_high_po_0p69 L=200 mult=1 m=1
+XR4 r4_m6 Va VSS sky130_fd_pr__res_high_po_0p69 L=204 mult=1 m=1
+XR1 r1_m8 vref VSS sky130_fd_pr__res_high_po_0p69 L=204 mult=1 m=1
 XM9 top_gate n_gate Va VSS sky130_fd_pr__nfet_01v8_lvt L=5 W=10 nf=1 m=1
 XM4 n_gate n_gate Vb VSS sky130_fd_pr__nfet_01v8_lvt L=5 W=10 nf=1 m=1
 XM5 VSS VSS r4_m6 VDD sky130_fd_pr__pfet_01v8_lvt L=5 W=10 nf=1 m=1

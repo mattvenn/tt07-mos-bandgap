@@ -158,12 +158,12 @@ C {devices/lab_wire.sym} 70 250 0 0 {name=p11 sig_type=std_logic lab=VSS}
 C {devices/lab_wire.sym} -290 200 0 0 {name=p2 sig_type=std_logic lab=Va}
 C {devices/lab_wire.sym} -80 200 0 0 {name=p12 sig_type=std_logic lab=Vb}
 C {sky130_fd_pr/res_high_po_0p69.sym} -220 250 0 0 {name=R4
-L=200
+L=204
 model=res_high_po_0p69
 spiceprefix=X
 mult=1}
 C {sky130_fd_pr/res_high_po_0p69.sym} 130 250 0 0 {name=R1
-L=200
+L=204
 model=res_high_po_0p69
 spiceprefix=X
 mult=1}

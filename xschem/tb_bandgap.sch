@@ -20,8 +20,9 @@ subdivx=1
 xlabmag=1.0
 ylabmag=1.0
 node="vref_out
-pin_out"
-color="4 6"
+pin_out
+pin_out_parax"
+color="4 6 10"
 
 unitx=1
 logx=0
@@ -43,8 +44,9 @@ subdivx=1
 xlabmag=1.0
 ylabmag=1.0
 node="vref_out
-pin_out"
-color="4 6"
+pin_out
+pin_out_parax"
+color="4 6 10"
 
 unitx=1
 logx=0
@@ -88,6 +90,36 @@ N -830 210 -820 210 {
 lab=vref_out}
 N -830 210 -830 300 {
 lab=vref_out}
+N -1270 720 -1060 720 {
+lab=vref_out_parax}
+N -1060 720 -1060 740 {
+lab=vref_out_parax}
+N -1060 740 -1020 740 {
+lab=vref_out_parax}
+N -1270 700 -1210 700 {
+lab=VDD}
+N -1270 740 -1210 740 {
+lab=VSS}
+N -720 800 -590 800 {
+lab=#net2}
+N -590 800 -590 1000 {
+lab=#net2}
+N -1060 1000 -590 1000 {
+lab=#net2}
+N -1060 860 -1060 1000 {
+lab=#net2}
+N -1060 860 -1020 860 {
+lab=#net2}
+N -480 800 -440 800 {
+lab=pin_out_parax}
+N -440 800 -400 800 {
+lab=pin_out_parax}
+N -590 800 -540 800 {
+lab=#net2}
+N -1060 630 -1050 630 {
+lab=vref_out_parax}
+N -1060 630 -1060 720 {
+lab=vref_out_parax}
 C {devices/lab_pin.sym} -820 210 0 1 {name=p16 sig_type=std_logic lab=vref_out
 }
 C {bandgap.sym} -1190 300 0 0 {name=x2}
@@ -159,3 +191,33 @@ value=10p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} -210 440 0 0 {name=l8 lab=GND}
+C {devices/lab_pin.sym} -1050 630 0 1 {name=p6 sig_type=std_logic lab=vref_out_parax
+}
+C {bandgap.sym} -1420 720 0 0 {name=x3
+schematic=bandgap_parax.sim
+spice_sym_def="tcleval(.include [file normalize ../mag/bandgap.sim.spice])"
+tclcommand="textwindow [file normalize ../mag/bandgap.sim.spice]"}
+C {devices/lab_pin.sym} -1210 700 2 0 {name=p7 sig_type=std_logic lab=VDD
+}
+C {devices/lab_pin.sym} -1210 740 2 0 {name=p8 sig_type=std_logic lab=VSS
+}
+C {p3_opamp.sym} -900 790 0 0 {name=x4
+schematic=p3_opamp_parax.sim
+spice_sym_def="tcleval(.include [file normalize ../mag/p3_opamp.sim.spice])"
+tclcommand="textwindow [file normalize ../mag/p3_opamp.sim.spice]"}
+C {devices/lab_pin.sym} -870 730 2 0 {name=p9 sig_type=std_logic lab=VDD
+}
+C {devices/lab_pin.sym} -870 870 2 0 {name=p10 sig_type=std_logic lab=VSS
+}
+C {devices/lab_pin.sym} -400 800 2 0 {name=p11 sig_type=std_logic lab=pin_out_parax}
+C {devices/res.sym} -510 800 1 0 {name=R2
+value=500R
+footprint=1206
+device=resistor
+m=1}
+C {devices/capa.sym} -440 830 0 0 {name=C3
+m=1
+value=10p
+footprint=1206
+device="ceramic capacitor"}
+C {devices/gnd.sym} -440 860 0 0 {name=l1 lab=GND}
