@@ -19,11 +19,11 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## Simulation
 
-Simulated output is 0.71 to 0.725v across the 10 to 120 degrees C.
+Simulated output is 0.714 to 0.716v across 10 to 120 degrees C.
 
-![startup](bandgap_startup.png)
+Simulated output is 0.6 to 0.8v across 1.6 to 2v VDD.
 
-![output](bandgap_output.png)
+![output](vdd_and_temp_sweep.png)
 
 ## How to test
 
