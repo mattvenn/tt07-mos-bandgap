@@ -30,8 +30,8 @@ DTMOS variant connects the lower PMOS body to VSS instead of VDD.
 
 ## DTMOS
 
-* Simulated output is 0.714 to 0.716v across 10 to 120 degrees C.
-* Simulated output is 0.6 to 0.8v across 1.6 to 2v VDD.
+* Simulated output is 0.515 to 0.510v across 10 to 120 degrees C.
+* Simulated output is 0.3 to 0.6v across 1.6 to 2v VDD.
 
 ![sim](dtmos_vdd_and_temp_sweep.png)
 
@@ -43,7 +43,7 @@ Connect a multimeter to analog output 0. It should measure around 0.7v and remai
 
 ### DTMOS
 
-Connect a multimeter to analog output 0. It should measure around 0.7v and remain constant with temperature.
+Connect a multimeter to analog output 0. It should measure around 0.5v and remain constant with temperature.
 
 ## External hardware
 
