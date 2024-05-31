@@ -20,6 +20,7 @@ module tt_um_mos_bandgap (
 );
 
     wire bg_out;
+    wire bg_dtmos_out;
 
     p3_opamp p3_opamp_0(
         .PLUS(bg_out),
