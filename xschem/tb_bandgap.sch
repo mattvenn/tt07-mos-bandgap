@@ -6,7 +6,7 @@ V {}
 S {}
 E {}
 B 2 40 -40 840 360 {flags=graph
-y1=0.45
+y1=0.28
 y2=0.83
 ypos1=0
 ypos2=2
@@ -19,10 +19,11 @@ divx=5
 subdivx=1
 xlabmag=1.0
 ylabmag=1.0
-node="vref_out
+node="vref_out 
+vref_out_dtmos
 pin_out
 pin_out_parax"
-color="4 6 10"
+color="4 6 10 4"
 
 unitx=1
 logx=0
@@ -30,8 +31,8 @@ logy=0
 rainbow=1
 dataset=0}
 B 2 40 420 840 820 {flags=graph
-y1=0.71
-y2=0.72
+y1=0.71292616
+y2=0.72092616
 ypos1=0
 ypos2=2
 divy=5
@@ -52,15 +53,57 @@ unitx=1
 logx=0
 logy=0
 dataset=1}
-N -1040 300 -830 300 {
+B 2 40 890 840 1290 {flags=graph
+y1=-0.00053
+y2=-0.00019
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=1.3
+x2=2
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node=i(v1)
+color=4
+dataset=-1
+unitx=1
+logx=0
+logy=0
+}
+B 2 890 420 1690 820 {flags=graph
+y1=0.50773665
+y2=0.51573665
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=10
+x2=100
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node=vref_out_dtmos
+color=4
+
+unitx=1
+logx=0
+logy=0
+dataset=1}
+N -1200 230 -990 230 {
 lab=vref_out}
-N -830 300 -830 320 {
+N -990 230 -990 250 {
 lab=vref_out}
-N -830 320 -790 320 {
+N -990 250 -950 250 {
 lab=vref_out}
-N -1040 280 -980 280 {
+N -1200 210 -1140 210 {
 lab=VDD}
-N -1040 320 -980 320 {
+N -1200 250 -1140 250 {
 lab=VSS}
 N -310 -40 -310 -30 {
 lab=VSS}
@@ -70,64 +113,94 @@ N -310 30 -310 40 {
 lab=GND}
 N -200 30 -200 40 {
 lab=GND}
-N -490 380 -360 380 {
+N -650 310 -520 310 {
 lab=#net1}
-N -360 380 -360 580 {
+N -520 310 -520 510 {
 lab=#net1}
-N -830 580 -360 580 {
+N -990 510 -520 510 {
 lab=#net1}
-N -830 440 -830 580 {
+N -990 370 -990 510 {
 lab=#net1}
-N -830 440 -790 440 {
+N -990 370 -950 370 {
 lab=#net1}
-N -250 380 -210 380 {
+N -410 310 -370 310 {
 lab=pin_out}
-N -210 380 -170 380 {
+N -370 310 -330 310 {
 lab=pin_out}
-N -360 380 -310 380 {
+N -520 310 -470 310 {
 lab=#net1}
-N -830 210 -820 210 {
+N -990 140 -980 140 {
 lab=vref_out}
-N -830 210 -830 300 {
+N -990 140 -990 230 {
 lab=vref_out}
-N -1270 720 -1060 720 {
+N -1210 1130 -1000 1130 {
 lab=vref_out_parax}
-N -1060 720 -1060 740 {
+N -1000 1130 -1000 1150 {
 lab=vref_out_parax}
-N -1060 740 -1020 740 {
+N -1000 1150 -960 1150 {
 lab=vref_out_parax}
-N -1270 700 -1210 700 {
+N -1210 1110 -1150 1110 {
 lab=VDD}
-N -1270 740 -1210 740 {
+N -1210 1150 -1150 1150 {
 lab=VSS}
-N -720 800 -590 800 {
+N -660 1210 -530 1210 {
 lab=#net2}
-N -590 800 -590 1000 {
+N -530 1210 -530 1410 {
 lab=#net2}
-N -1060 1000 -590 1000 {
+N -1000 1410 -530 1410 {
 lab=#net2}
-N -1060 860 -1060 1000 {
+N -1000 1270 -1000 1410 {
 lab=#net2}
-N -1060 860 -1020 860 {
+N -1000 1270 -960 1270 {
 lab=#net2}
-N -480 800 -440 800 {
+N -420 1210 -380 1210 {
 lab=pin_out_parax}
-N -440 800 -400 800 {
+N -380 1210 -340 1210 {
 lab=pin_out_parax}
-N -590 800 -540 800 {
+N -530 1210 -480 1210 {
 lab=#net2}
-N -1060 630 -1050 630 {
+N -1000 1040 -990 1040 {
 lab=vref_out_parax}
-N -1060 630 -1060 720 {
+N -1000 1040 -1000 1130 {
 lab=vref_out_parax}
-C {devices/lab_pin.sym} -820 210 0 1 {name=p16 sig_type=std_logic lab=vref_out
+N -1200 680 -990 680 {
+lab=vref_out_dtmos}
+N -990 680 -990 700 {
+lab=vref_out_dtmos}
+N -990 700 -950 700 {
+lab=vref_out_dtmos}
+N -1200 660 -1140 660 {
+lab=VDD}
+N -1200 700 -1140 700 {
+lab=VSS}
+N -650 760 -520 760 {
+lab=#net3}
+N -520 760 -520 960 {
+lab=#net3}
+N -990 960 -520 960 {
+lab=#net3}
+N -990 820 -990 960 {
+lab=#net3}
+N -990 820 -950 820 {
+lab=#net3}
+N -410 760 -370 760 {
+lab=pin_out_dtmos}
+N -370 760 -330 760 {
+lab=pin_out_dtmos}
+N -520 760 -470 760 {
+lab=#net3}
+N -990 590 -980 590 {
+lab=vref_out_dtmos}
+N -990 590 -990 680 {
+lab=vref_out_dtmos}
+C {devices/lab_pin.sym} -980 140 0 1 {name=p16 sig_type=std_logic lab=vref_out
 }
-C {bandgap.sym} -1190 300 0 0 {name=x2}
-C {devices/lab_pin.sym} -980 280 2 0 {name=p1 sig_type=std_logic lab=VDD
+C {bandgap.sym} -1350 230 0 0 {name=x2}
+C {devices/lab_pin.sym} -1140 210 2 0 {name=p1 sig_type=std_logic lab=VDD
 }
-C {devices/lab_pin.sym} -980 320 2 0 {name=p2 sig_type=std_logic lab=VSS
+C {devices/lab_pin.sym} -1140 250 2 0 {name=p2 sig_type=std_logic lab=VSS
 }
-C {devices/launcher.sym} -150 820 0 0 {name=h1
+C {devices/launcher.sym} 120 1380 0 0 {name=h1
 descr="load waves" 
 tclcommand="xschem raw_read $netlist_dir/tb_bandgap.raw"
 }
@@ -174,50 +247,74 @@ device="ceramic capacitor"}
 C {devices/lab_pin.sym} -430 -30 2 1 {name=p19 sig_type=std_logic lab=VDD
 }
 C {devices/gnd.sym} -430 30 0 0 {name=l4 lab=GND}
-C {p3_opamp.sym} -670 370 0 0 {name=x1}
-C {devices/lab_pin.sym} -640 310 2 0 {name=p3 sig_type=std_logic lab=VDD
+C {p3_opamp.sym} -830 300 0 0 {name=x1}
+C {devices/lab_pin.sym} -800 240 2 0 {name=p3 sig_type=std_logic lab=VDD
 }
-C {devices/lab_pin.sym} -640 450 2 0 {name=p4 sig_type=std_logic lab=VSS
+C {devices/lab_pin.sym} -800 380 2 0 {name=p4 sig_type=std_logic lab=VSS
 }
-C {devices/lab_pin.sym} -170 380 2 0 {name=p5 sig_type=std_logic lab=pin_out}
-C {devices/res.sym} -280 380 1 0 {name=R1
+C {devices/lab_pin.sym} -330 310 2 0 {name=p5 sig_type=std_logic lab=pin_out}
+C {devices/res.sym} -440 310 1 0 {name=R1
 value=500R
 footprint=1206
 device=resistor
 m=1}
-C {devices/capa.sym} -210 410 0 0 {name=C2
+C {devices/capa.sym} -370 340 0 0 {name=C2
 m=1
 value=10p
 footprint=1206
 device="ceramic capacitor"}
-C {devices/gnd.sym} -210 440 0 0 {name=l8 lab=GND}
-C {devices/lab_pin.sym} -1050 630 0 1 {name=p6 sig_type=std_logic lab=vref_out_parax
+C {devices/gnd.sym} -370 370 0 0 {name=l8 lab=GND}
+C {devices/lab_pin.sym} -990 1040 0 1 {name=p6 sig_type=std_logic lab=vref_out_parax
 }
-C {bandgap.sym} -1420 720 0 0 {name=x3
+C {bandgap.sym} -1360 1130 0 0 {name=x3
 schematic=bandgap_parax.sim
 spice_sym_def="tcleval(.include [file normalize ../mag/bandgap.sim.spice])"
 tclcommand="textwindow [file normalize ../mag/bandgap.sim.spice]"}
-C {devices/lab_pin.sym} -1210 700 2 0 {name=p7 sig_type=std_logic lab=VDD
+C {devices/lab_pin.sym} -1150 1110 2 0 {name=p7 sig_type=std_logic lab=VDD
 }
-C {devices/lab_pin.sym} -1210 740 2 0 {name=p8 sig_type=std_logic lab=VSS
+C {devices/lab_pin.sym} -1150 1150 2 0 {name=p8 sig_type=std_logic lab=VSS
 }
-C {p3_opamp.sym} -900 790 0 0 {name=x4
+C {p3_opamp.sym} -840 1200 0 0 {name=x4
 schematic=p3_opamp_parax.sim
 spice_sym_def="tcleval(.include [file normalize ../mag/p3_opamp.sim.spice])"
 tclcommand="textwindow [file normalize ../mag/p3_opamp.sim.spice]"}
-C {devices/lab_pin.sym} -870 730 2 0 {name=p9 sig_type=std_logic lab=VDD
+C {devices/lab_pin.sym} -810 1140 2 0 {name=p9 sig_type=std_logic lab=VDD
 }
-C {devices/lab_pin.sym} -870 870 2 0 {name=p10 sig_type=std_logic lab=VSS
+C {devices/lab_pin.sym} -810 1280 2 0 {name=p10 sig_type=std_logic lab=VSS
 }
-C {devices/lab_pin.sym} -400 800 2 0 {name=p11 sig_type=std_logic lab=pin_out_parax}
-C {devices/res.sym} -510 800 1 0 {name=R2
+C {devices/lab_pin.sym} -340 1210 2 0 {name=p11 sig_type=std_logic lab=pin_out_parax}
+C {devices/res.sym} -450 1210 1 0 {name=R2
 value=500R
 footprint=1206
 device=resistor
 m=1}
-C {devices/capa.sym} -440 830 0 0 {name=C3
+C {devices/capa.sym} -380 1240 0 0 {name=C3
 m=1
 value=10p
 footprint=1206
 device="ceramic capacitor"}
-C {devices/gnd.sym} -440 860 0 0 {name=l1 lab=GND}
+C {devices/gnd.sym} -380 1270 0 0 {name=l1 lab=GND}
+C {devices/lab_pin.sym} -980 590 0 1 {name=p12 sig_type=std_logic lab=vref_out_dtmos
+}
+C {devices/lab_pin.sym} -1140 660 2 0 {name=p13 sig_type=std_logic lab=VDD
+}
+C {devices/lab_pin.sym} -1140 700 2 0 {name=p14 sig_type=std_logic lab=VSS
+}
+C {p3_opamp.sym} -830 750 0 0 {name=x6}
+C {devices/lab_pin.sym} -800 690 2 0 {name=p15 sig_type=std_logic lab=VDD
+}
+C {devices/lab_pin.sym} -800 830 2 0 {name=p20 sig_type=std_logic lab=VSS
+}
+C {devices/lab_pin.sym} -330 760 2 0 {name=p21 sig_type=std_logic lab=pin_out_dtmos}
+C {devices/res.sym} -440 760 1 0 {name=R3
+value=500R
+footprint=1206
+device=resistor
+m=1}
+C {devices/capa.sym} -370 790 0 0 {name=C4
+m=1
+value=10p
+footprint=1206
+device="ceramic capacitor"}
+C {devices/gnd.sym} -370 820 0 0 {name=l5 lab=GND}
+C {bandgap_dtmos.sym} -1350 680 0 0 {name=x7}
