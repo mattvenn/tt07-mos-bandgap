@@ -6,7 +6,7 @@ V {}
 S {}
 E {}
 B 2 40 -40 840 360 {flags=graph
-y1=0.28
+y1=0.45
 y2=0.83
 ypos1=0
 ypos2=2
@@ -20,10 +20,9 @@ subdivx=1
 xlabmag=1.0
 ylabmag=1.0
 node="vref_out 
-vref_out_dtmos
 pin_out
 pin_out_parax"
-color="4 6 10 4"
+color="4 6 10"
 
 unitx=1
 logx=0
@@ -75,8 +74,8 @@ logx=0
 logy=0
 }
 B 2 890 420 1690 820 {flags=graph
-y1=0.50773665
-y2=0.51573665
+y1=0.50161991
+y2=0.51761991
 ypos1=0
 ypos2=2
 divy=5
@@ -95,6 +94,30 @@ unitx=1
 logx=0
 logy=0
 dataset=1}
+B 2 890 -40 1690 360 {flags=graph
+y1=0.28
+y2=0.62
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=1.3
+x2=2
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node=vref_out_dtmos
+color=4
+
+unitx=1
+logx=0
+logy=0
+rainbow=1
+dataset=0}
+T {MOS Variant} 290 -150 0 0 1 1 {}
+T {DTMOS Variant} 1160 -150 0 0 1 1 {}
 N -1200 230 -990 230 {
 lab=vref_out}
 N -990 230 -990 250 {
